@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import UpdateTask from "./UpdateTask";
 import { useDispatch, useSelector } from "react-redux";
-import { removeTaskFromList, setSelectedTask } from "./slices/tasksSlice";
+import {
+  getTaksFromServer,
+  removeTaskFromList,
+  setSelectedTask,
+} from "./slices/tasksSlice";
 
 const TasksList = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -19,6 +23,10 @@ const TasksList = () => {
     console.log("Delete Task");
     dispatch(removeTaskFromList(task));
   };
+
+  useEffect(() => {
+    dispatch(getTaksFromServer());
+  }, [dispatch]);
 
   return (
     <>
