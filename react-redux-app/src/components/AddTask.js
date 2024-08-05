@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { addTasktoList } from "./slices/tasksSlice";
+import { addTasksToServer } from "./slices/tasksSlice";
 import { useDispatch } from "react-redux";
 
 const AddTask = () => {
@@ -13,7 +13,7 @@ const AddTask = () => {
   const addTask = (e) => {
     e.preventDefault();
     console.log({ title, description });
-    dispatch(addTasktoList({ title, description }));
+    dispatch(addTasksToServer({ title, description }));
     setTitle("");
     setDescription("");
   };

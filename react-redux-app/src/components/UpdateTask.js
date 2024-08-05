@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTaskInList } from "./slices/tasksSlice";
+import { updateTaskInServer } from "./slices/tasksSlice";
 
 const UpdateTask = (props) => {
   const { selectedTask } = useSelector((state) => state.tasks);
@@ -12,7 +12,7 @@ const UpdateTask = (props) => {
 
   const updateTask = () => {
     props.onHide();
-    dispatch(updateTaskInList({ id, title, description }));
+    dispatch(updateTaskInServer({ id, title, description }));
   };
 
   useEffect(() => {

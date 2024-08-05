@@ -3,6 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import UpdateTask from "./UpdateTask";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteTaskFromServer,
   getTaksFromServer,
   removeTaskFromList,
   setSelectedTask,
@@ -21,7 +22,9 @@ const TasksList = () => {
 
   const deleteTask = (task) => {
     console.log("Delete Task");
-    dispatch(removeTaskFromList(task));
+    dispatch(deleteTaskFromServer(task)).then(() => {
+      dispatch(removeTaskFromList(task));
+    });
   };
 
   useEffect(() => {
