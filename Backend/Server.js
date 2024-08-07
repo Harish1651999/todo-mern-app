@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const taskRoutes = require("./Routes/TaskRoute");
 
 const app = express();
 
@@ -10,9 +11,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+app.use(express.json());
+
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// });
 
 // DB Connection
 mongoose
@@ -27,3 +30,5 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+app.use("/api/tasks", taskRoutes);
